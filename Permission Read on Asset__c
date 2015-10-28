@@ -1,0 +1,8 @@
+SELECT Assignee.Name, PermissionSet.Id, PermissionSet.isOwnedByProfile, PermissionSet.Profile.Name, PermissionSet.Label
+FROM PermissionSetAssignment
+WHERE PermissionSetId
+IN (SELECT ParentId
+FROM ObjectPermissions
+WHERE SObjectType = 'Asset__c' AND
+PermissionsRead = true)
+
